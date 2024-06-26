@@ -2,8 +2,6 @@ import asyncio
 import datetime
 import os
 import time
-
-import boto3
 from binance import AsyncClient, BinanceSocketManager
 from dateutil.parser import parse
 
@@ -21,7 +19,6 @@ async def main():
     active_file_time = int(round(time.time()) / 60)
 
     new_local_data_file_path = '/home/ec2-user/binance9/data/' + str(int(active_file_time * 60)) + '.tsv'
-    # new_local_data_file_path = '/Users/miuul/Documents/PyCharmProjects/binance_5/data/' + str(int(active_file_time * 60)) + '.tsv'
     #
     f = open(new_local_data_file_path, 'w')
     client = await AsyncClient.create()
@@ -45,7 +42,6 @@ async def main():
                 count += 1
                 active_file_time = new_file_time
                 new_local_data_file_path = '/home/ec2-user/binance9/data/' + str(int(active_file_time * 60)) + '.tsv'
-                # new_local_data_file_path = '/Users/miuul/Documents/PyCharmProjects/binance_5/data/' + str(int(active_file_time * 60)) + '.tsv'
 
                 f = open(new_local_data_file_path, 'w')
 
